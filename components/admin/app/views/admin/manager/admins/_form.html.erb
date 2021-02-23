@@ -1,0 +1,17 @@
+<%= form_with(model: manager_admin) do |form| %>
+  <% if manager_admin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(manager_admin.errors.count, "error") %> prohibited this manager_admin from being saved:</h2>
+
+      <ul>
+        <% manager_admin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
