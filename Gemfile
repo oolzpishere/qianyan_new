@@ -69,5 +69,5 @@ gem 'devise'
 # my engines
 gem 'admin', path: 'components/admin'
 
-gem 'account', path: "../_gems/account"
-# gem 'account', git: "https://github.com/oolzpishere/account"
+# gem 'account', path: "../_gems/account"
+gem 'account', git: "https://github.com/oolzpishere/account"

@@ -59,3 +59,19 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+server "qianyan.sflx.com.cn",
+       user: "ubuntu",
+       roles: %w{web app},
+       ssh_options: {
+         user: "ubuntu", # overrides user setting above
+         keys: %w(/Users/leeli/.ssh/tencent_rsa),
+         forward_agent: false,
+         auth_methods: %w(publickey)
+         # password: "please use keys"
+       }
+
+set :puma_conf, "#{shared_path}/puma_production.rb"
+set :puma_bind, File.join("unix://#{shared_path}", 'tmp', 'sockets', 'puma_production.sock')
+
+set :nginx_server_name, "qianyan.sflx.com.cn"
+set :nginx_use_ssl, false
