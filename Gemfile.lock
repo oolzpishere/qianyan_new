@@ -1,7 +1,8 @@
-PATH
-  remote: ../_gems/account
+GIT
+  remote: https://github.com/oolzpishere/account
+  revision: 68ab2fb9b2e74c08174b4459c093f55b058ac473
   specs:
-    account (0.1.7)
+    account (0.1.8)
       active_model_otp
       aliyun-sms
       bootstrap
