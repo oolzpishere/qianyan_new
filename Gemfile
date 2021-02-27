@@ -50,7 +50,7 @@ group :development do
   gem "capistrano", "~> 3.11", require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano-rbenv'
-  gem 'capistrano3-puma'
+  gem 'capistrano3-puma', git: "https://github.com/seuros/capistrano-puma.git"
 end
 
 group :test do

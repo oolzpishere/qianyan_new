@@ -61,15 +61,30 @@ set :keep_assets, 2
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads', 'public/assets', 'storage'
 
+append :linked_files, "config/master.key"
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/master.key ]")
+          upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
+      end
+    end
+  end
+end
+
+### capistrano/puma
+# set :puma_service_unit_env_file, '/etc/puma_systemd_environment_file'
+set :nginx_sites_available_path, "/etc/nginx/sites-available"
+set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
+
 ### rbenv setting
 set :rbenv_ruby, '2.7.2'
 # set :rbenv_type, :user # or :system, depends on your rbenv setup
-# set :rbenv_prefix, "source ~/.zshrc; RBENV_ROOT=#{fetch(:rbenv_path)}  #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_prefix, "source ~/.zshrc;"
-# set :rbenv_prefix, "source ~/.zshrc; RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_custom_path, "/home/ubuntu/.rbenv"
+set :rbenv_prefix, "#{fetch(:rbenv_path)}/bin/rbenv exec"
+# set :rbenv_prefix, "source /home/ubuntu/.zshrc; #{fetch(:rbenv_path)}/bin/rbenv exec"
+
 set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 set :rbenv_roles, :all # default value
-
-### capistrano/puma
-set :nginx_sites_available_path, "/etc/nginx/sites-available"
-set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
