@@ -70,6 +70,7 @@ gem 'pg'
 
 # my engines
 gem 'admin', path: 'components/admin'
+gem 'sign_up', path: 'components/sign_up'
 
 # gem 'account', path: "../_gems/account"
 gem 'account', git: "https://github.com/oolzpishere/account"
