@@ -68,13 +68,14 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
   end
 
   create_table "sign_up_forms", force: :cascade do |t|
-    t.string "subject"
+    t.integer "conference_id"
     t.string "form_identify"
     t.string "form_name"
     t.string "form_type"
     t.string "all_use_data_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["conference_id"], name: "index_sign_up_forms_on_conference_id"
   end
 
   create_table "stream_codes", force: :cascade do |t|
@@ -131,6 +132,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
   end
 
   add_foreign_key "sign_up_data", "sign_up_forms"
+  add_foreign_key "sign_up_forms", "conferences"
   add_foreign_key "stream_codes", "conferences"
   add_foreign_key "stream_codes", "sign_up_data", column: "sign_up_data_id"
   add_foreign_key "stream_codes", "sign_up_forms"
