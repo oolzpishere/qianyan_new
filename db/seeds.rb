@@ -8,52 +8,96 @@
 
 Account::Admin.create([
   {id: 1, email: ENV["TEST_ADMIN_EMAIL"], password: ENV["TEST_APP_PASSWORD"], password_confirmation: ENV["TEST_APP_PASSWORD"], role: "admin"}
-  ])
+])
 
 Account::Admin.create([
   {id: 2, email: "sponsor@test.com", password: ENV["TEST_APP_PASSWORD"], password_confirmation: ENV["TEST_APP_PASSWORD"], role: "sponsor"}
-  ])
-
+])
 
 Account::User.create([
   {id: 1, email: ENV["TEST_USER_EMAIL"], password: ENV["TEST_APP_PASSWORD"], password_confirmation: ENV["TEST_APP_PASSWORD"]}
-  ])
+])
 
 SignUp::Conference.create([
-  {id: 1,
+  { id: 1,
     name: "2021春全国初中数学",
     full_name: "东师 “前沿课堂”大家谈（2021春）全国初中数学教学在线观摩研讨会",
     eng_name: "twenty_one_junior_high_math",
     start_date: "2021/4/6",
     finish_date: "2021/4/7"},
-  {id: 2,
+  { id: 2,
     name: "2021春全国初中语文",
     full_name: "东师 “前沿课堂”大家谈（2021春）全国初中语文教学在线观摩研讨会",
     eng_name: "twenty_one_junior_high_chinese",
     start_date: "2021/4/8",
     finish_date: "2021/4/9"},
-  {id: 3,
+  { id: 3,
     name: "2021春全国初中英语",
     full_name: "东师 “前沿课堂”大家谈（2021春）全国初中英语教学在线观摩研讨会",
     eng_name: "twenty_one_junior_high_english",
     start_date: "2021/4/10",
     finish_date: "2021/4/11"},
-  {id: 4,
+  { id: 4,
     name: "2021春全国小学数学",
     full_name: "东师 “前沿课堂”大家谈（2021春）全国小学数学教学在线观摩研讨会",
     eng_name: "twenty_one_primary_math",
     start_date: "2021/4/24",
     finish_date: "2021/4/25"},
-  {id: 5,
+  { id: 5,
     name: "2021春全国小学语文",
     full_name: "东师 “前沿课堂”大家谈（2021春）全国小学语文教学在线观摩研讨会",
     eng_name: "twenty_one_primary_chinese",
     start_date: "2021/5/7",
     finish_date: "2021/5/8"},
-  {id: 6,
+  { id: 6,
     name: "2021春全国小学英语",
     full_name: "东师 “前沿课堂”大家谈（2021春）全国小学英语教学在线观摩研讨会",
     eng_name: "twenty_one_primary_english",
     start_date: "2021/5/14",
     finish_date: "2021/5/15"}
-  ])
+])
+
+SignUp::SignUpForm.create([
+  # jsj payment form 1
+  { conference_id: 1,
+    name: "（2021春）全国初中数学",
+    form_identify: "yMGJyp",
+    full_name: "",
+    form_type: "jsj_json",
+    all_use_data_type: "jsj_json"},
+  # jsj payment form 2
+  { conference_id: 2,
+    name: "（2021春）全国初中语文",
+    form_identify: "J8Dn9E",
+    full_name: "",
+    form_type: "jsj_json",
+    all_use_data_type: "jsj_json"},
+  # jsj payment form 3
+  { conference_id: 3,
+    name: "（2021春）全国初中英语",
+    form_identify: "vutO2s",
+    full_name: "",
+    form_type: "jsj_json",
+    all_use_data_type: "jsj_json"},
+  # jsj payment form 4
+  { conference_id: 4,
+    name: "（2021春）全国小学数学",
+    form_identify: "g2ywVL",
+    full_name: "",
+    form_type: "jsj_json",
+    all_use_data_type: "jsj_json"},
+  # jsj payment form 5
+  { conference_id: 5,
+    name: "（2021春）全国小学语文",
+    form_identify: "nezjFn",
+    full_name: "",
+    form_type: "jsj_json",
+    all_use_data_type: "jsj_json"},
+  # jsj payment form 6
+  { conference_id: 6,
+    name: "（2021春）全国小学英语",
+    form_identify: "iArAhn",
+    full_name: "",
+    form_type: "jsj_json",
+    all_use_data_type: "jsj_json"},
+])

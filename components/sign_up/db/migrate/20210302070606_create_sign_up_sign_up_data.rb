@@ -14,7 +14,7 @@ class CreateSignUpSignUpData < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    
+
     add_index :sign_up_data, :jsj_id
     add_index :sign_up_data, :phone
     add_index :sign_up_data, :email

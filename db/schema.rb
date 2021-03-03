@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
     t.date "finish_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["eng_name"], name: "index_conferences_on_eng_name", unique: true
   end
 
   create_table "identifies", force: :cascade do |t|
@@ -70,12 +71,15 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
   create_table "sign_up_forms", force: :cascade do |t|
     t.integer "conference_id"
     t.string "form_identify"
-    t.string "form_name"
+    t.string "name"
+    t.string "full_name"
     t.string "form_type"
     t.string "all_use_data_type"
+    t.string "sign_up_link"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conference_id"], name: "index_sign_up_forms_on_conference_id"
+    t.index ["form_identify"], name: "index_sign_up_forms_on_form_identify", unique: true
   end
 
   create_table "stream_codes", force: :cascade do |t|
