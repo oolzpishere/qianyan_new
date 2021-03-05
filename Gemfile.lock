@@ -26,6 +26,12 @@ PATH
     sign_up (0.1.0)
       rails (~> 6.1.3)
 
+PATH
+  remote: components/uploader
+  specs:
+    uploader (0.1.0)
+      rails (~> 6.1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -362,6 +368,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
+  uploader!
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)

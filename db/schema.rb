@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
     t.string "form_type"
     t.string "all_use_data_type"
     t.string "sign_up_link"
+    t.json "form_struct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conference_id"], name: "index_sign_up_forms_on_conference_id"

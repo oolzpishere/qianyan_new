@@ -8,6 +8,7 @@ class CreateSignUpForms < ActiveRecord::Migration[6.1]
       t.string :form_type
       t.string :all_use_data_type
       t.string :sign_up_link
+      t.json :form_struct
 
       t.timestamps
     end
