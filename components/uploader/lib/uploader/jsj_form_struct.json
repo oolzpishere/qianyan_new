@@ -1,0 +1,414 @@
+{ "name": "东师 “前沿课堂”大家谈（2021春）全国初中语文教学在线观摩研讨会",
+  "description": ".....",
+  "fields": [
+        {
+            "field_45": {
+                "label": "发票号",
+                "type": "single_line_text",
+                "notes": "",
+                "private": true,
+                "validation": {}
+            }
+        },
+        {
+            "field_57": {
+                "label": "银行转账确认",
+                "type": "single_choice",
+                "notes": "",
+                "private": true,
+                "validation": {},
+                "choices": [
+                    {
+                        "name": "已确认",
+                        "value": "wBkd",
+                        "hidden": false
+                    },
+                    {
+                        "name": "未收到",
+                        "value": "7ZmF",
+                        "hidden": false
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_70": {
+                "label": "学生证确认",
+                "type": "single_choice",
+                "notes": "",
+                "private": true,
+                "validation": {},
+                "choices": [
+                    {
+                        "name": "已确认",
+                        "value": "ATYQ",
+                        "hidden": false
+                    },
+                    {
+                        "name": "未确认",
+                        "value": "TQ7v",
+                        "hidden": false
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_62": {
+                "label": "直播密码发送状态",
+                "type": "single_choice",
+                "notes": "",
+                "private": true,
+                "validation": {},
+                "choices": [
+                    {
+                        "name": "已手动发送",
+                        "value": "wBkd",
+                        "hidden": false
+                    },
+                    {
+                        "name": "未手动发送",
+                        "value": "7ZmF",
+                        "hidden": false
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_58": {
+                "label": "加发直播密码",
+                "type": "single_line_text",
+                "notes": "",
+                "private": true,
+                "validation": {}
+            }
+        },
+        {
+            "field_71": {
+                "label": "工作人员备注",
+                "type": "single_line_text",
+                "notes": "",
+                "private": true,
+                "validation": {}
+            }
+        },
+        {
+            "field_68": {
+                "label": "参会人身份",
+                "type": "single_choice",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                },
+                "choices": [
+                    {
+                        "name": "中小学、培训学校教师",
+                        "value": "qetK",
+                        "hidden": false
+                    },
+                    {
+                        "name": "教研员、辅导员、学校管理人员",
+                        "value": "JgZV",
+                        "hidden": false
+                    },
+                    {
+                        "name": "高校教师、研究者",
+                        "value": "A63Z",
+                        "hidden": false
+                    },
+                    {
+                        "name": "师范院校、普通院校在校学生",
+                        "value": "QVwv",
+                        "hidden": false
+                    },
+                    {
+                        "name": "其他（三区三州、东师师生、东师教师教育创新实验区教师）",
+                        "value": "czIs",
+                        "hidden": false
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_74": {
+                "label": "“其他“参会代表报名说明",
+                "type": "section_break",
+                "notes": "<p>“三区三州、东师师生、东师教师教育创新实验区教师”点击报名页面链接，跳转至专用报名页面，并按要求提交审核材料：</p>\n\n<p><a href=\"https://www.wjx.cn/vm/Pseq1Fc.aspx\" target=\"_blank\">https://www.wjx.cn/vm/Pseq1Fc.aspx</a></p>\n\n<p>*点击该链接进行报名，无需填写下方信息</p>",
+                "private": false,
+                "validation": {}
+            }
+        },
+        {
+            "field_53": {
+                "label": "所在地",
+                "type": "address",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_54": {
+                "label": "学校/单位名称",
+                "type": "single_line_text",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_1": {
+                "label": "姓名",
+                "type": "single_line_text",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_2": {
+                "label": "手机",
+                "type": "mobile",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_17": {
+                "label": "邮箱",
+                "type": "email",
+                "notes": "<p>接收电子发票等</p>",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_69": {
+                "label": "上传学生证照片",
+                "type": "attachment",
+                "notes": "<p>请上传本人学生证照片，含本人姓名、院校、专业、学制、入学时间、学校或院系章。工作人员审核通过后，直播验证码方可使用。</p>",
+                "private": false,
+                "validation": {},
+                "max_file_quantity": 1,
+                "media_type": {
+                    "type": "unlimited",
+                    "value": []
+                }
+            }
+        },
+        {
+            "field_26": {
+                "label": "缴费方式",
+                "type": "single_choice",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                },
+                "choices": [
+                    {
+                        "name": "线上支付",
+                        "value": "kLNX",
+                        "hidden": false
+                    },
+                    {
+                        "name": "银行汇款",
+                        "value": "sATL",
+                        "hidden": false
+                    },
+                    {
+                        "name": "现场现金或刷卡交费",
+                        "value": "9OgL",
+                        "hidden": true
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_56": {
+                "label": "银行汇款凭证",
+                "type": "attachment",
+                "notes": "<p>请将银行汇款凭证照片（含网银付款凭证截图）上传，或发送到：，邮件名称同汇款附言内容一致</p>",
+                "private": true,
+                "validation": {},
+                "max_file_quantity": 2,
+                "media_type": {
+                    "type": "image",
+                    "value": [
+                        "jpg",
+                        "jpeg",
+                        "png",
+                        "gif",
+                        "bmp",
+                        "psd",
+                        "tif"
+                    ]
+                }
+            }
+        },
+        {
+            "field_25": {
+                "label": "会务费",
+                "type": "goods",
+                "notes": "<p>每次提交只可报名1人。</p>",
+                "private": false,
+                "validation": {
+                    "required": true
+                },
+                "goods_items": [
+                    {
+                        "name": "初中语文",
+                        "value": "qdVi",
+                        "description": null,
+                        "inventory": null,
+                        "hidden": false
+                    },
+                    {
+                        "name": "2020测试",
+                        "value": "pp3R",
+                        "description": null,
+                        "inventory": null,
+                        "hidden": true
+                    }
+                ]
+            }
+        },
+        {
+            "field_66": {
+                "label": "会务费（在校学生）",
+                "type": "goods",
+                "notes": "<p>每次提交只可报名1人。</p>",
+                "private": false,
+                "validation": {},
+                "goods_items": [
+                    {
+                        "name": "初中语文",
+                        "value": "qdVi",
+                        "description": null,
+                        "inventory": null,
+                        "hidden": false
+                    },
+                    {
+                        "name": "2020测试",
+                        "value": "pp3R",
+                        "description": null,
+                        "inventory": null,
+                        "hidden": true
+                    }
+                ]
+            }
+        },
+        {
+            "field_59": {
+                "label": "发票",
+                "type": "single_choice",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                },
+                "choices": [
+                    {
+                        "name": "不开票",
+                        "value": "z9WH",
+                        "hidden": false
+                    },
+                    {
+                        "name": "电子版（缴费后15天内推送到登记的电子邮箱）",
+                        "value": "tuUC",
+                        "hidden": false
+                    },
+                    {
+                        "name": "纸质版（会议结束后40天内邮寄",
+                        "value": "529o",
+                        "hidden": false
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_63": {
+                "label": "发票费用类型",
+                "type": "single_choice",
+                "notes": "",
+                "private": false,
+                "validation": {
+                    "required": true
+                },
+                "choices": [
+                    {
+                        "name": "培训费",
+                        "value": "z4bN",
+                        "hidden": false
+                    },
+                    {
+                        "name": "会务费",
+                        "value": "Ou4s",
+                        "hidden": false
+                    }
+                ],
+                "allow_other": false
+            }
+        },
+        {
+            "field_18": {
+                "label": "发票单位全称（开发票抬头）",
+                "type": "single_line_text",
+                "notes": "<p>请务必问清楚财务单位报销抬头，无需开具发票的请填“无”</p>",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_19": {
+                "label": "纳税人识别号（统一社会信用代码）",
+                "type": "single_line_text",
+                "notes": "<p>请务必问清楚财务单位的纳税人识别号（统一社会信用代码），若确认不需要就填“无”。如因发票信息提供错误，请恕无法重开。</p>",
+                "private": false,
+                "validation": {
+                    "required": true,
+                    "maximum_length": 18
+                }
+            }
+        },
+        {
+            "field_49": {
+                "label": "详细邮寄地址",
+                "type": "address",
+                "notes": "<p>如需纸质发票请填写。无需纸质发票可不填。</p>",
+                "private": false,
+                "validation": {
+                    "required": true
+                }
+            }
+        },
+        {
+            "field_24": {
+                "label": "备注",
+                "type": "single_line_text",
+                "notes": "",
+                "private": false,
+                "validation": {}
+            }
+        }
+    ]
+}
