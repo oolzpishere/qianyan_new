@@ -14,8 +14,8 @@ module Uploader
       @fields = form_struct[:fields]
     end
 
-    def method_name
-
+    def find_by_lable
+      # fields.each
     end
 
 
