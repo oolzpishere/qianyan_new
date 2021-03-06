@@ -22,11 +22,11 @@ module Uploader
     private
 
     def self.update_to_db(enroll_datum)
-      Uploader::UpdateSignUpDatum.update_to_db(enroll_datum)
+      SignUp::SignUpDatum.update(enroll_datum.to_params)
     end
 
     def self.create_to_db(enroll_datum)
-      Uploader::UpdateSignUpDatum.create_to_db(enroll_datum)
+      SignUp::SignUpDatum.create(enroll_datum.to_params)
     end
 
   end

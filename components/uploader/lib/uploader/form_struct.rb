@@ -14,8 +14,16 @@ module Uploader
       @fields = form_struct[:fields]
     end
 
-    def find_by_lable
-      # fields.each
+    def find_by_label(label)
+      result_field = nil
+      fields.each do |hash|
+        field = Field.new(hash)
+        if field.label == label
+          result_field = field
+          break
+        end
+      end
+      result_field
     end
 
 
