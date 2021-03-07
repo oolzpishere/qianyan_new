@@ -57,47 +57,47 @@ SignUp::Conference.create([
     finish_date: "2021/5/15"}
 ])
 
-SignUp::SignUpForm.create([
-  # jsj payment form 1
-  { conference_id: 1,
-    name: "（2021春）全国初中数学",
-    form_identify: "yMGJyp",
-    full_name: "",
-    form_type: "jsj_json",
-    all_use_data_type: "jsj_json"},
-  # jsj payment form 2
-  { conference_id: 2,
-    name: "（2021春）全国初中语文",
-    form_identify: "J8Dn9E",
-    full_name: "",
-    form_type: "jsj_json",
-    all_use_data_type: "jsj_json"},
-  # jsj payment form 3
-  { conference_id: 3,
-    name: "（2021春）全国初中英语",
-    form_identify: "vutO2s",
-    full_name: "",
-    form_type: "jsj_json",
-    all_use_data_type: "jsj_json"},
-  # jsj payment form 4
-  { conference_id: 4,
-    name: "（2021春）全国小学数学",
-    form_identify: "g2ywVL",
-    full_name: "",
-    form_type: "jsj_json",
-    all_use_data_type: "jsj_json"},
-  # jsj payment form 5
-  { conference_id: 5,
-    name: "（2021春）全国小学语文",
-    form_identify: "nezjFn",
-    full_name: "",
-    form_type: "jsj_json",
-    all_use_data_type: "jsj_json"},
-  # jsj payment form 6
-  { conference_id: 6,
-    name: "（2021春）全国小学英语",
-    form_identify: "iArAhn",
-    full_name: "",
-    form_type: "jsj_json",
-    all_use_data_type: "jsj_json"},
-])
+# SignUp::SignUpForm.create([
+#   # jsj payment form 1
+#   { conference_id: 1,
+#     name: "（2021春）全国初中数学",
+#     form_identify: "yMGJyp",
+#     full_name: "",
+#     form_type: "jsj_json",
+#     all_use_data_type: "jsj_json"},
+#   # jsj payment form 2
+#   { conference_id: 2,
+#     name: "（2021春）全国初中语文",
+#     form_identify: "J8Dn9E",
+#     full_name: "",
+#     form_type: "jsj_json",
+#     all_use_data_type: "jsj_json"},
+#   # jsj payment form 3
+#   { conference_id: 3,
+#     name: "（2021春）全国初中英语",
+#     form_identify: "vutO2s",
+#     full_name: "",
+#     form_type: "jsj_json",
+#     all_use_data_type: "jsj_json"},
+#   # jsj payment form 4
+#   { conference_id: 4,
+#     name: "（2021春）全国小学数学",
+#     form_identify: "g2ywVL",
+#     full_name: "",
+#     form_type: "jsj_json",
+#     all_use_data_type: "jsj_json"},
+#   # jsj payment form 5
+#   { conference_id: 5,
+#     name: "（2021春）全国小学语文",
+#     form_identify: "nezjFn",
+#     full_name: "",
+#     form_type: "jsj_json",
+#     all_use_data_type: "jsj_json"},
+#   # jsj payment form 6
+#   { conference_id: 6,
+#     name: "（2021春）全国小学英语",
+#     form_identify: "iArAhn",
+#     full_name: "",
+#     form_type: "jsj_json",
+#     all_use_data_type: "jsj_json"},
+# ])
