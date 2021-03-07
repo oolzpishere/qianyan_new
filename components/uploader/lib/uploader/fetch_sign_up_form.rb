@@ -24,7 +24,7 @@ module Uploader
       results = send_request(url)
       params = to_params(results).merge( pre_setting_params(form_hash) )
       # update, if exist and difference with db.
-      sync_db(params)
+      sync_to_db(params)
     end
 
     private
@@ -83,7 +83,7 @@ module Uploader
       FORMS.find { |hash| hash[:form_identify] == form_identify }
     end
 
-    def self.sync_db(params)
+    def self.sync_to_db(params)
       new_form = SignUp::SignUpForm.new(params)
       form_identify = params[:form_identify]
       # if find in db

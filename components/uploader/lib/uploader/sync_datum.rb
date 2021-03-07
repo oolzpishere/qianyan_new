@@ -1,8 +1,8 @@
 module Uploader
   module SyncDatum
 
-    def self.sync_db(enroll_raw_datum)
-      enroll_datum = SyncDatum::EnrollDatum.new(enroll_raw_datum)
+    def self.sync_to_db(enroll_raw_datum)
+      enroll_datum = EnrollDatum.new(enroll_raw_datum)
       # compare with db, return compare result.
       sign_up_datum_compare = SignUpDatumCompareWithDb.new(enroll_datum)
 
