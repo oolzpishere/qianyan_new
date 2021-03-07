@@ -6,18 +6,28 @@ module Uploader
 
     def push_datum
       form_identify = params[:form_identify]
+      jsj_json = parse_json( request.body.read )
       # sync datum
-      Uploader::SyncDatum.new(form_identify)
-
+      Uploader::SyncDatum.sync_to_db(jsj_json)
     end
 
     private
 
     def verify_pass_token
-      if params[:pass_token] && ENV["QIANYAN_PASS"]
-        secure_compare(params[:pass_token], ENV["QIANYAN_PASS"])
+      if params[:pass_token] && ENV.fetch("QIANYAN_PASS")
+        ActiveSupport::SecurityUtils.secure_compare(
+          params[:pass_token], ENV.fetch("QIANYAN_PASS")
+        )
       else
         false
+      end
+    end
+
+    def parse_json(raw_datum)
+      if raw_datum.is_a?(Hash)
+        raw_datum
+      else
+        JSON.parse(raw_datum).deep_symbolize_keys
       end
     end
 

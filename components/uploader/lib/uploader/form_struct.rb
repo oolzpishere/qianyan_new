@@ -1,17 +1,16 @@
 module Uploader
   class FormStruct
-    attr_reader :sign_up_form, :form_struct, :name, :description, :fields
-    def initialize(form_identify:, sign_up_form:)
+    attr_reader :sign_up_form, :name, :description, :fields
+    def initialize(form_identify: nil, sign_up_form: nil)
       if sign_up_form
         @sign_up_form = sign_up_form
       elsif form_identify
         @sign_up_form = SignUp::SignUpForm.find_by(form_identify: form_identify)
       end
 
-      @form_struct = parse_json(sign_up_form.form_struct).deep_symbolize_keys
-      @name = form_struct[:name]
-      @description = form_struct[:description]
-      @fields = form_struct[:fields]
+      @name = sign_up_form.name
+      @description = sign_up_form.description
+      @fields = parse_json(sign_up_form.form_struct)
     end
 
     def find_by_label(label)

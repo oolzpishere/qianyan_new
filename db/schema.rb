@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
     t.string "form_identify"
     t.string "name"
     t.string "full_name"
+    t.string "description"
     t.string "form_type"
     t.string "all_use_data_type"
     t.string "sign_up_link"

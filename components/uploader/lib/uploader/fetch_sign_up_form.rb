@@ -71,6 +71,7 @@ module Uploader
     def self.to_params(results)
       {
         full_name: results[:name],
+        description: results[:description],
         form_struct: results[:fields]
       }
     end

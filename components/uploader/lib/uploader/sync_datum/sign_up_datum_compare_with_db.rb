@@ -16,31 +16,34 @@ module Uploader
         return unless db_sign_up_datum
         # if finded,then compare
         # results: exist, exist and same, exist not same, not exist
-        if compare_with_db_entry(enroll_datum, db_sign_up_datum)
-          @exist_in_db = true
-          @entry_same_with_db = true
-        end
+        compare_with_db_entry(enroll_datum, db_sign_up_datum)
       end
 
-      def exist_in_db?
-        exist_in_db
-      end
-
-      def entry_same_with_db?
-        entry_same_with_db
-      end
+      # def exist_in_db?
+      #   exist_in_db
+      # end
+      #
+      # def entry_same_with_db?
+      #   entry_same_with_db
+      # end
 
       private
 
       def find_on_db(enroll_datum)
-        SignUp::SignUpDatum.find_by(
+        datum = SignUp::SignUpDatum.find_by(
           sign_up_form_id: enroll_datum.sign_up_form.id,
           jsj_id: enroll_datum.jsj_id
         )
+        if datum
+          @exist_in_db = true
+        end
+        datum
       end
 
       def compare_with_db_entry(enroll_datum, db_sign_up_datum)
-        enroll_datum.entry == db_sign_up_datum.entry
+        if enroll_datum.entry == db_sign_up_datum.entry
+          @entry_same_with_db = true
+        end
       end
 
     end

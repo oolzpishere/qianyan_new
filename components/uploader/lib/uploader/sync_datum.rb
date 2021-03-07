@@ -5,9 +5,8 @@ module Uploader
       enroll_datum = EnrollDatum.new(enroll_raw_datum)
       # compare with db, return compare result.
       sign_up_datum_compare = SignUpDatumCompareWithDb.new(enroll_datum)
-
-      exist = sign_up_datum_compare.exist_in_db?
-      same = sign_up_datum_compare.entry_same_with_db？
+      exist = sign_up_datum_compare.exist_in_db
+      same = sign_up_datum_compare.entry_same_with_db
       if exist && same
         # skip, if entry is the same.
       elsif exist && !same
