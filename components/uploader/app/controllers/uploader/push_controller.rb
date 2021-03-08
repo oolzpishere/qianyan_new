@@ -9,17 +9,24 @@ module Uploader
       jsj_json = parse_json( request.body.read )
       # sync datum
       Uploader::SyncDatum.sync_to_db(jsj_json)
+      render json: {:response => 'success'}, :status => 201
+      # respond_to do |format|
+      #   # format.html
+      #   format.json { render json: {:response => 'success'}, :status => 201 }
+      # end
     end
 
     private
 
     def verify_pass_token
-      if params[:pass_token] && ENV.fetch("QIANYAN_PASS")
+      unless ( params[:pass_token] &&
+        ENV.fetch("QIANYAN_PASS") &&
         ActiveSupport::SecurityUtils.secure_compare(
           params[:pass_token], ENV.fetch("QIANYAN_PASS")
-        )
-      else
-        false
+        ) )
+        # <203: Non-Authoritative Information>
+        # password wrong, stop execution.
+        head 203
       end
     end
 

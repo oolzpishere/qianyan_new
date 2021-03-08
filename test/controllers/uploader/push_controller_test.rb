@@ -29,10 +29,31 @@ module Uploader
       @sign_up_datum_hash = {:form=>"yMGJyp", :form_name=>"东师 “前沿课堂”大家谈（2021春）全国初中数学教学在线观摩研讨会", :entry=>{:serial_number=>123, :total_price=>123, :preferential_price=>123, :trade_no=>"2013110473887777", :trade_status=>"TRADE_SUCCESS", :payment_method=>"alipay", :field_45=>"这是一行文字", :field_57=>"选项1", :field_70=>"选项1", :field_62=>"选项1", :field_58=>"这是一行文字", :field_71=>"这是一行文字", :field_68=>"选项1", :field_53=>{:province=>"陕西省", :city=>"西安市", :district=>"雁塔区", :street=>"高新路"}, :field_54=>"这是一行文字", :field_1=>"这是一行文字", :field_2=>"13812345678", :field_17=>"support@jinshuju.net", :field_69=>["https://example.jinshuju.net/en/key1?token=token&download"], :field_26=>"选项1", :field_56=>["https://example.jinshuju.net/en/key1?token=token&download", "https://example.jinshuju.net/en/key2?token=token&download"], :field_25=>[{:name=>"商品1", :number=>2}, {:name=>"商品2", :number=>10, :spec=>{:颜色=>"红"}}], :field_66=>[{:name=>"商品1", :number=>2}, {:name=>"商品2", :number=>10, :spec=>{:颜色=>"红"}}], :field_59=>"选项1", :field_63=>"选项1", :field_18=>"这是一行文字", :field_19=>"这是一行文字", :field_49=>{:province=>"陕西省", :city=>"西安市", :district=>"雁塔区", :street=>"高新路"}, :field_24=>"这是一行文字", :x_field_weixin_nickname=>"小王", :x_field_weixin_gender=>"男", :x_field_weixin_country=>"中国", :x_field_weixin_province_city=>{:province=>"陕西", :city=>"西安"}, :x_field_weixin_openid=>"adsfQWEasfxqw", :x_field_weixin_headimgurl=>"http://wx.qlogo.cn/mmopen/m8kRxejzzH0/0", :creator_name=>"小王", :created_at=>"2021-03-07T16:06:07.256Z", :updated_at=>"2021-03-07T16:06:07.256Z", :info_remote_ip=>"127.0.0.1"}}
     end
 
-    test "the truth" do
+    teardown do
+      # when controller is using cache it may be a good idea to reset it afterwards
+      # Rails.cache.clear
+    end
+
+    test "right pass should create success" do
       # 'push/:form_identify/:pass_token'
       post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
       assert_equal 1, SignUp::SignUpDatum.all.count
+      assert_response :success
     end
+
+    test "wrong pass shouldn't create sign up datum" do
+      post "/push/yMGJyp/wrong_password", params: @sign_up_datum_hash, as: :json
+      assert_equal 0, SignUp::SignUpDatum.all.count
+      assert_response 203
+    end
+
+    test "same push datum, not create twice" do
+      post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
+      post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
+      assert_equal 1, SignUp::SignUpDatum.all.count
+      assert_response :success
+    end
+
+
   end
 end

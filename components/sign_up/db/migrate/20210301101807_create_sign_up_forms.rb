@@ -11,6 +11,9 @@ class CreateSignUpForms < ActiveRecord::Migration[6.1]
       t.string :sign_up_link
       # fields:
       t.json :form_struct
+      t.string :xml_fields
+      # json or xml, default form_struct json
+      t.string :use_fields_type
 
       t.timestamps
     end
