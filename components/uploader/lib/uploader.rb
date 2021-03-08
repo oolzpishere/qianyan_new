@@ -10,6 +10,8 @@ require "uploader/sync_datum"
 require "uploader/sync_datum/enroll_datum"
 require "uploader/sync_datum/sign_up_datum_compare_with_db"
 
+require "uploader/pull_data"
+
 
 
 module Uploader
