@@ -54,6 +54,18 @@ module Uploader
       assert_response :success
     end
 
+    test "update push datum, db should be update" do
+      post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
+
+      @sign_up_datum_hash[:entry][:creator_name] = "new_name"
+      post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
+
+      assert_equal 1, SignUp::SignUpDatum.all.count
+      datum = SignUp::SignUpDatum.first
+      assert_equal "new_name", datum.entry["creator_name"]
+      assert_response :success
+    end
+
 
   end
 end
