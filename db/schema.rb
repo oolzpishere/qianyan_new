@@ -87,16 +87,18 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
   end
 
   create_table "stream_codes", force: :cascade do |t|
-    t.integer "sign_up_data_id"
+    t.integer "sign_up_datum_id"
     t.integer "sign_up_form_id"
     t.integer "conference_id"
     t.string "code"
     t.boolean "visible"
+    t.boolean "used"
+    t.string "used_by"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conference_id"], name: "index_stream_codes_on_conference_id"
-    t.index ["sign_up_data_id"], name: "index_stream_codes_on_sign_up_data_id"
+    t.index ["sign_up_datum_id"], name: "index_stream_codes_on_sign_up_datum_id"
     t.index ["sign_up_form_id"], name: "index_stream_codes_on_sign_up_form_id"
   end
 
@@ -142,7 +144,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_090341) do
   add_foreign_key "sign_up_data", "sign_up_forms"
   add_foreign_key "sign_up_forms", "conferences"
   add_foreign_key "stream_codes", "conferences"
-  add_foreign_key "stream_codes", "sign_up_data", column: "sign_up_data_id"
+  add_foreign_key "stream_codes", "sign_up_data"
   add_foreign_key "stream_codes", "sign_up_forms"
   add_foreign_key "twenty_one_junior_high_maths", "sign_up_forms"
 end
