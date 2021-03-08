@@ -47,22 +47,28 @@ module Uploader
       assert_response 203
     end
 
-    test "same push datum, not create twice" do
+    test "same push datum, not create twice, updated_at not update" do
       post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
+      buf_updated_at = SignUp::SignUpDatum.first.updated_at
       post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
       assert_equal 1, SignUp::SignUpDatum.all.count
+      now_updated_at = SignUp::SignUpDatum.first.updated_at
+      assert_equal buf_updated_at, now_updated_at
       assert_response :success
     end
 
-    test "update push datum, db should be update" do
+    test "update push datum, db should be update, updated_at being update" do
       post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
+      buf_updated_at = SignUp::SignUpDatum.first.updated_at
 
       @sign_up_datum_hash[:entry][:creator_name] = "new_name"
       post "/push/yMGJyp/#{ENV.fetch("QIANYAN_PASS")}", params: @sign_up_datum_hash, as: :json
 
       assert_equal 1, SignUp::SignUpDatum.all.count
       datum = SignUp::SignUpDatum.first
+      now_updated_at = datum.updated_at
       assert_equal "new_name", datum.entry["creator_name"]
+      assert_not_equal buf_updated_at, now_updated_at
       assert_response :success
     end
 
