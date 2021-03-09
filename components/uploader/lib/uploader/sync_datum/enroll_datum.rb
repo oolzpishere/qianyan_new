@@ -3,13 +3,9 @@ module Uploader
     class EnrollDatum
       attr_reader :sign_up_form, :form_struct, :jsj_id, :entry, :use_data_type, :jsj_created_at, :jsj_updated_at, :phone, :email, :openid, :unionid
 
-      def initialize(enroll_raw_datum, form_identify: nil)
-        enroll_datum = parse_json(enroll_raw_datum)
-        form_identify = form_identify || enroll_datum[:form]
-        raise "Don't have form_identify" unless form_identify
-
-        @entry = enroll_datum[:entry]
+      def initialize(raw_entry, form_identify)
         @sign_up_form = SignUp::SignUpForm.find_by(form_identify: form_identify)
+        @entry = parse_json(raw_entry)
 
         @form_struct = Uploader::FormStruct.new(sign_up_form: sign_up_form)
 
@@ -38,11 +34,11 @@ module Uploader
 
       private
 
-      def parse_json(enroll_raw_datum)
-        if enroll_raw_datum.is_a?(Hash)
-          enroll_raw_datum
+      def parse_json(raw_entry)
+        if raw_entry.is_a?(Hash)
+          raw_entry.deep_symbolize_keys
         else
-          JSON.parse(enroll_raw_datum).deep_symbolize_keys
+          JSON.parse(raw_entry).deep_symbolize_keys
         end
       end
 

@@ -2,7 +2,9 @@ module Uploader
   module SyncDatum
 
     def self.sync_to_db(enroll_raw_datum)
-      enroll_datum = EnrollDatum.new(enroll_raw_datum)
+      form_identify = enroll_raw_datum[:form]
+      entry = enroll_raw_datum[:entry]
+      enroll_datum = EnrollDatum.new(entry, form_identify)
       # compare with db, return compare result.
       sign_up_datum_compare = SignUpDatumCompareWithDb.new(enroll_datum)
       exist = sign_up_datum_compare.exist_in_db
