@@ -20,15 +20,76 @@ module Uploader
 
       private
 
+      def find_form
+        SignUp::SignUpForm.find_by(form_identify: form_identify)
+      end
+
       def loop_curl
         next_num = nil
         begin
           url = gen_next_url(next_num)
           results = send_request(url)
           next_num = results[:next]
-          handle_results(results)
+          # handle_results(results)
+          HandleResults.new(form_identify, results)
         end while next_num
       end
+
+      # def handle_results(results)
+      #   # data: [{:serial_number=>1, ...}...]
+      #   data = results[:data]
+      #   @source_enroll_data = data.map {|d| Uploader::EnrollDatum.new(d, form_identify)}
+      #   start_id = data.first[:serial_number].to_i
+      #   end_id = data.last[:serial_number].to_i
+      #   # get_jsj_range_array in db
+      #   db_array = get_jsj_range_array_in_db(sign_up_form.id, start_id, end_id)
+      #   @db_enroll_data = db_array.map {|d| Uploader::EnrollDatum.new(d.entry, form_identify)}
+      #   # compare source_array with db array
+      #   compare_result = compare_source_with_db(data, db_array)
+      #
+      #   # update diff
+      # end
+
+      # def get_jsj_range_array_in_db(sign_up_form_id, start_id, end_id)
+      #   SignUp::SignUpDatum.where( sign_up_form_id: sign_up_form_id ).and( SignUp::SignUpDatum.where( jsj_id: [start_id..end_id] ) )
+      # end
+      #
+      # def compare_source_with_db(source_array, db_array)
+      #   # D compare_result = {}
+      #   source_id_array = source_array.map {|item| item[:serial_number]}
+      #   db_id_array = db_array.map {|item| item.entry[:serial_number]}
+      #   intersection_id_array = source_id_array & db_id_array
+      #   # D compare_result[:intersection] = intersection_array
+      #   # select extra in source, and create those
+      #   @create_source_id_array = source_id_array - intersection_array
+      #   # select extra in db, and delete those
+      #   @delete_db_id_array = db_id_array - intersection_array
+      #   compare_intersection(intersection_id_array)
+      #   # D compare_result
+      # end
+      #
+      # def compare_intersection(intersection_id_array)
+      #   update_source_ids = []
+      #   # select source_intersection_data
+      #   source_intersection_data = select_source_intersection_data(intersection_id_array)
+      #   # compare each entry of datum, return diff array.
+      #   source_intersection_data.each do |source_datum|
+      #     jsj_id = source_datum.jsj_id
+      #     if (source_datum.entry != find_db_datum(jsj_id).entry)
+      #       update_source_ids << jsj_id
+      #     end
+      #   end
+      #   update_source_ids
+      # end
+      #
+      # def select_source_intersection_data(intersection_id_array)
+      #   source_enroll_data.select {
+      #     |d| intersection_id_array.include?( d.jsj_id ) }
+      # end
+      #
+      # def find_db_datum(jsj_id)
+      #   db_enroll_data.find { |d| d.jsj_id == jsj_id }
+      # end
 
       def send_request(url)
         response = RestClient::Request.execute(
@@ -64,41 +125,12 @@ module Uploader
         ENV.fetch("JINSHUJU_API_KEY") + ":" + ENV.fetch("JINSHUJU_API_SECRET")
       end
 
-      def handle_results(results)
-        # data: [{:serial_number=>1, ...}...]
-
-        data = results[:data]
-        start_id = data.first[:serial_number].to_i
-        end_id = data.last[:serial_number].to_i
-        # get_jsj_range_array in db
-        db_array = get_jsj_range_array_in_db(sign_up_form.id, start_id, end_id)
-
-        # compare source_array with db array
-        compare_source_with_db(data, db_array)
-
-
-
-        # update diff
-      end
-
-      def find_form
-        SignUp::SignUpForm.find_by(form_identify: form_identify)
-      end
-
-      def get_jsj_range_array_in_db(sign_up_form_id, start_id, end_id)
-        SignUp::SignUpDatum.where( sign_up_form_id: sign_up_form_id ).and( SignUp::SignUpDatum.where( jsj_id: [start_id..end_id] ) )
-      end
-
-      def compare_source_with_db(source_array, db_array)
-        compare_result = {}
-        source_id_array = source_array.map {|item| item[:serial_number]}
-        db_id_array = db_array.map {|item| item.entry[:serial_number]}
-        compare_result[:intersection]
-        # select extra in source, and create
-        compare_result[:source_not_intersection]
-        # select extra in db, and delete
-        compare_result[:db_not_intersection]
-
+      def parse_json(raw_entry)
+        if raw_entry.is_a?(Hash)
+          raw_entry.deep_symbolize_keys
+        else
+          JSON.parse(raw_entry).deep_symbolize_keys
+        end
       end
 
     end

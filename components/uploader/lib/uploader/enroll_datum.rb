@@ -1,5 +1,4 @@
 module Uploader
-
   class EnrollDatum
     attr_reader :sign_up_form, :form_struct, :jsj_id, :entry, :use_data_type, :jsj_created_at, :jsj_updated_at, :phone, :email, :openid, :unionid
 
@@ -55,5 +54,4 @@ module Uploader
     end
 
   end
-
 end
