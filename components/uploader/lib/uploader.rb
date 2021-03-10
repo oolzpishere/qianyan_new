@@ -9,10 +9,12 @@ require "uploader/enroll_datum"
 
 
 require "uploader/sync_datum"
-# require "uploader/sync_datum/enroll_datum"
 require "uploader/sync_datum/sign_up_datum_compare_with_db"
 
 require "uploader/pull_data"
+require "uploader/pull_data/pull_form"
+require "uploader/pull_data/handle_results"
+
 
 
 

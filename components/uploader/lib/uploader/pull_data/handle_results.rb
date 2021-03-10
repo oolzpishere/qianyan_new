@@ -9,7 +9,7 @@ module Uploader
         # next: when not next, it will be nil.
         @form_identify = form_identify
         @sign_up_form = find_form
-        @results
+        @results = results
       end
 
       def invoke
@@ -18,7 +18,7 @@ module Uploader
         @source_enroll_data = data.map {|d| Uploader::EnrollDatum.new(d, form_identify)}
 
         start_id = source_enroll_data.first.jsj_id
-        end_id = source_enroll_data.jsj_id
+        end_id = source_enroll_data.last.jsj_id
         # get_jsj_range_array in db
         db_array = get_jsj_range_array_in_db(sign_up_form.id, start_id, end_id)
         @db_enroll_data = db_array.map {|d| Uploader::EnrollDatum.new(d.entry, form_identify)}
@@ -55,9 +55,9 @@ module Uploader
         db_id_array = db_enroll_data.map {|item| item.jsj_id}
         intersection_id_array = source_id_array & db_id_array
         # select extra in source, and create those
-        @create_source_jsj_ids = source_id_array - intersection_array
+        @create_source_jsj_ids = source_id_array - intersection_id_array
         # select extra in db, and delete those
-        @delete_db_jsj_ids = db_id_array - intersection_array
+        @delete_db_jsj_ids = db_id_array - intersection_id_array
         compare_intersection(intersection_id_array)
       end
 

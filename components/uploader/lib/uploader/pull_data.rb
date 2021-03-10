@@ -5,7 +5,7 @@ module Uploader
     end
 
     def self.pull_form(form_identify)
-      PullForm.new(form_identify)
+      PullForm.new(form_identify).pull_form
     end
 
     private
